@@ -9,37 +9,62 @@
 import SpriteKit
 
 class GameScene: SKScene {
-    override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "Hello, World!";
-        myLabel.fontSize = 65;
-        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-        
-        self.addChild(myLabel)
+    var senpaiNumber : Int!
+    var senpaiName : String!
+    
+    var senpai : SKSpriteNode!
+    var senpaiPreview : SKSpriteNode!
+    var previewText : SKLabelNode!
+    
+    var playAreaWidth : CGFloat!
+    var playAreaHeight : CGFloat!
+    
+    func randomNumber(range: Range<Int>) -> Int {
+        let min = range.startIndex
+        let max = range.endIndex
+        return Int(arc4random_uniform(UInt32(max - min))) + min
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        /* Called when a touch begins */
-        
-        for touch in (touches as! Set<UITouch>) {
-            let location = touch.locationInNode(self)
-            
-            let sprite = SKSpriteNode(imageNamed:"Spaceship")
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
-            self.addChild(sprite)
-        }
+    func scale(number: CGFloat) -> CGFloat {
+        return number * CGFloat(Float(arc4random()) / Float(UINT32_MAX))
     }
-   
-    override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
+    
+    func setUpPlayArea() {
+        backgroundColor = SKColor.whiteColor()
+        playAreaWidth = size.width * 0.9;
+        playAreaHeight = size.height - 10;
+    }
+    
+    func choseSenpai() {
+        senpaiNumber = randomNumber(1...20)
+        NSLog("Senpai Number: %d", senpaiNumber)
+        senpaiName = "Char" + String(senpaiNumber)
+        let senpaiPreviewName = senpaiName + "Big"
+        
+        senpai = SKSpriteNode(imageNamed: senpaiName);
+        senpaiPreview = SKSpriteNode(imageNamed: senpaiPreviewName)
+        
+        previewText = SKLabelNode(fontNamed: "Arial")
+        previewText.text = "Senpai Preview"
+        previewText.fontSize = 10
+        previewText.fontColor = SKColor.blackColor()
+        
+        let senpaiX = scale(playAreaWidth)
+        let senpaiY = scale(playAreaHeight)
+        
+        // Set up senpai's position and the position of the preview
+        senpai.position = CGPoint(x: senpaiX, y: senpaiY)
+        senpaiPreview.position = CGPoint(x: size.width - senpaiPreview.size.width, y: senpaiPreview.size.height)
+        previewText.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 50)
+        
+        addChild(senpai)
+        addChild(senpaiPreview)
+        addChild(previewText)
+    }
+    
+    
+    override func didMoveToView(view: SKView) {
+        setUpPlayArea()
+        choseSenpai()
     }
 }
