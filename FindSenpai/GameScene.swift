@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+@available(iOS 9.0, *)
 class GameScene: SKScene {
     var senpaiNumber : Int!
     var senpaiName : String!
@@ -26,6 +27,8 @@ class GameScene: SKScene {
     var widthOffset = 10
     var characterArray : NSMutableArray!
     
+    var backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
+    
     func randomNumber(range: Range<Int>) -> Int {
         let min = range.startIndex
         let max = range.endIndex
@@ -41,11 +44,16 @@ class GameScene: SKScene {
         playAreaWidth = size.width * 0.8
         playAreaHeight = size.height * 0.8
         heightOffset = Int(size.height - playAreaHeight) / 2
+        addChild(backgroundMusic)
     }
     
     func reset() {
         characterArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
-        removeAllChildren()
+        for child in self.children as [SKNode] {
+            if ((child.name?.containsString("Senpai")) != nil) {
+                self.removeChildrenInArray([child])
+            }
+        }
     }
     
     func generateName(number: NSNumber) -> String {
@@ -66,11 +74,12 @@ class GameScene: SKScene {
         
         // Set up senpai's position and the position of the preview
         senpai.position = CGPoint(x: senpaiX, y: senpaiY)
-        senpaiPreview.position = CGPoint(x: size.width - senpaiPreview.size.width, y: senpaiPreview.size.height)
+        senpaiPreview.position = CGPoint(x: size.width - senpaiPreview.size.width, y: (senpaiPreview.size.height / 2) + 10)
         
         senpaiPreview.userInteractionEnabled = true
         senpai.userInteractionEnabled = false
         senpai.name = "Senpai"
+        senpaiPreview.name = "SenpaiPreview"
         senpai.zPosition = 2
         
         addChild(senpai)
@@ -98,8 +107,8 @@ class GameScene: SKScene {
         levelDesc.fontSize = 40
         levelDesc.fontColor = SKColor.blackColor()
         
-        previewText1.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 70)
-        previewText2.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 50)
+        previewText1.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 50)
+        previewText2.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 30)
         levelLabel.position = CGPoint(x: senpaiPreview.position.x, y: size.height - 40)
         levelDesc.position = CGPoint(x: senpaiPreview.position.x, y: levelLabel.position.y - 40)
         
@@ -117,7 +126,7 @@ class GameScene: SKScene {
     func generateCharacters() {
         let characterSize = 50 * 25
         let numCharacters = Int((playAreaWidth * playAreaHeight) / CGFloat(characterSize * 3)) + level^2
-        for(var i = 0; i < numCharacters; ++i) {
+        for _ in 0...numCharacters {
             let randomIndex:Int = Int(arc4random_uniform(UInt32(characterArray.count)))
             let randomNonSenpaiNumber:NSNumber = characterArray[randomIndex] as! NSNumber
             let nonSenpaiName:String = generateName(randomNonSenpaiNumber)
@@ -140,7 +149,6 @@ class GameScene: SKScene {
         reset()
         choseSenpai()
         generateCharacters()
-        makeLabels()
     }
     
     override func didMoveToView(view: SKView) {
@@ -155,7 +163,8 @@ class GameScene: SKScene {
         let touchedNode = self.nodeAtPoint(positionInScene)
         if touchedNode.name == "Senpai" {
             print("Found Senpai")
-            ++level
+            level += 1
+            updateLevelText()
             newGame()
         } else if touchedNode.name == "NonSenpai" {
             print("WRONG");

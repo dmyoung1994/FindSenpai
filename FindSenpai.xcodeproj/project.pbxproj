@@ -15,6 +15,7 @@
 		D964F6801C83DCD6006A8AB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D964F67E1C83DCD6006A8AB9 /* LaunchScreen.xib */; };
 		D964F68C1C83DCD6006A8AB9 /* FindSenpaiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964F68B1C83DCD6006A8AB9 /* FindSenpaiTests.swift */; };
 		D964F6961C83DEFF006A8AB9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D964F6951C83DEFF006A8AB9 /* Images.xcassets */; };
+		D98388B71CB8786C003E721E /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D98388B61CB8786C003E721E /* background.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		D964F68A1C83DCD6006A8AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D964F68B1C83DCD6006A8AB9 /* FindSenpaiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindSenpaiTests.swift; sourceTree = "<group>"; };
 		D964F6951C83DEFF006A8AB9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../../../.Trash/Images.xcassets; sourceTree = "<group>"; };
+		D98388B61CB8786C003E721E /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		D964F66E1C83DCD6006A8AB9 /* FindSenpai */ = {
 			isa = PBXGroup;
 			children = (
+				D98388B61CB8786C003E721E /* background.mp3 */,
 				D964F6951C83DEFF006A8AB9 /* Images.xcassets */,
 				D964F6711C83DCD6006A8AB9 /* AppDelegate.swift */,
 				D964F6731C83DCD6006A8AB9 /* GameScene.sks */,
@@ -168,6 +171,7 @@
 				TargetAttributes = {
 					D964F66B1C83DCD6006A8AB9 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = PEY8BBLW7A;
 					};
 					D964F6841C83DCD6006A8AB9 = {
 						CreatedOnToolsVersion = 6.4;
@@ -200,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D964F6801C83DCD6006A8AB9 /* LaunchScreen.xib in Resources */,
+				D98388B71CB8786C003E721E /* background.mp3 in Resources */,
 				D964F6961C83DEFF006A8AB9 /* Images.xcassets in Resources */,
 				D964F6741C83DCD6006A8AB9 /* GameScene.sks in Resources */,
 				D964F67B1C83DCD6006A8AB9 /* Main.storyboard in Resources */,
@@ -352,10 +357,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FindSenpai/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.scoutgames.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -363,10 +371,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FindSenpai/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.scoutgames.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

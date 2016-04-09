@@ -1,6 +1,7 @@
 import UIKit
 import SpriteKit
 
+@available(iOS 9.0, *)
 class GameViewController: UIViewController {
     
     override func viewDidLoad() {
