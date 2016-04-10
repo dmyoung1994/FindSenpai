@@ -12,7 +12,12 @@ import SpriteKit
 class GameScene: SKScene {
     var senpaiNumber : Int!
     var senpaiName : String!
-    var level : Int = 1
+    
+    var level = 1
+    var widthOffset = 10
+    var characterSize = 50 * 25
+    var numCharacters = 1
+    var difficulty = 3
     
     var senpai : SKSpriteNode!
     var senpaiPreview : SKSpriteNode!
@@ -24,10 +29,10 @@ class GameScene: SKScene {
     var playAreaWidth : CGFloat!
     var playAreaHeight : CGFloat!
     var heightOffset : Int!
-    var widthOffset = 10
     var characterArray : NSMutableArray!
     
     var backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
+    var levelReward = SKSpriteNode(imageNamed: "reward")
     
     func randomNumber(range: Range<Int>) -> Int {
         let min = range.startIndex
@@ -41,10 +46,19 @@ class GameScene: SKScene {
     
     func setUp() {
         backgroundColor = SKColor.whiteColor()
+        
+        levelReward.size = CGSize(width: (levelReward.size.width / 6), height: (levelReward.size.height / 6))
+        levelReward.alpha = 0.0
+        levelReward.zPosition = 3
+        levelReward.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
+        
         playAreaWidth = size.width * 0.8
         playAreaHeight = size.height * 0.8
         heightOffset = Int(size.height - playAreaHeight) / 2
+        numCharacters = Int((playAreaWidth * playAreaHeight) / CGFloat(characterSize * 3))
+        
         addChild(backgroundMusic)
+        addChild(levelReward)
     }
     
     func reset() {
@@ -86,6 +100,15 @@ class GameScene: SKScene {
         addChild(senpaiPreview)
     }
     
+    func animateReward() {
+        let fadeIn = SKAction.fadeInWithDuration(0)
+        let scaleUp = SKAction.scaleTo(2, duration: 0.5)
+        let fadeOut = SKAction.fadeOutWithDuration(0.5)
+        let scaleDown = SKAction.scaleTo(1, duration: 0)
+        let sequecnce = SKAction.sequence([fadeIn, scaleUp, fadeOut, scaleDown])
+        levelReward.runAction(sequecnce)
+    }
+    
     func makeLabels() {
         previewText1 = SKLabelNode(fontNamed: "Arial")
         previewText1.text = "Senpai"
@@ -124,8 +147,7 @@ class GameScene: SKScene {
     }
     
     func generateCharacters() {
-        let characterSize = 50 * 25
-        let numCharacters = Int((playAreaWidth * playAreaHeight) / CGFloat(characterSize * 3)) + level^2
+        numCharacters = numCharacters + (level * difficulty)
         for _ in 0...numCharacters {
             let randomIndex:Int = Int(arc4random_uniform(UInt32(characterArray.count)))
             let randomNonSenpaiNumber:NSNumber = characterArray[randomIndex] as! NSNumber
@@ -142,6 +164,7 @@ class GameScene: SKScene {
     }
     
     func updateLevelText() {
+        level += 1
         levelDesc.text = String(level)
     }
     
@@ -149,6 +172,12 @@ class GameScene: SKScene {
         reset()
         choseSenpai()
         generateCharacters()
+    }
+    
+    func nextLevel() {
+        animateReward()
+        updateLevelText()
+        newGame()
     }
     
     override func didMoveToView(view: SKView) {
@@ -163,9 +192,7 @@ class GameScene: SKScene {
         let touchedNode = self.nodeAtPoint(positionInScene)
         if touchedNode.name == "Senpai" {
             print("Found Senpai")
-            level += 1
-            updateLevelText()
-            newGame()
+            nextLevel()
         } else if touchedNode.name == "NonSenpai" {
             print("WRONG");
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D96319DB1CB9FDA000257B45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D96319DA1CB9FDA000257B45 /* Images.xcassets */; };
 		D964F6721C83DCD6006A8AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964F6711C83DCD6006A8AB9 /* AppDelegate.swift */; };
 		D964F6741C83DCD6006A8AB9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D964F6731C83DCD6006A8AB9 /* GameScene.sks */; };
 		D964F6761C83DCD6006A8AB9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964F6751C83DCD6006A8AB9 /* GameScene.swift */; };
@@ -14,7 +15,6 @@
 		D964F67B1C83DCD6006A8AB9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D964F6791C83DCD6006A8AB9 /* Main.storyboard */; };
 		D964F6801C83DCD6006A8AB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D964F67E1C83DCD6006A8AB9 /* LaunchScreen.xib */; };
 		D964F68C1C83DCD6006A8AB9 /* FindSenpaiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964F68B1C83DCD6006A8AB9 /* FindSenpaiTests.swift */; };
-		D964F6961C83DEFF006A8AB9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D964F6951C83DEFF006A8AB9 /* Images.xcassets */; };
 		D98388B71CB8786C003E721E /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D98388B61CB8786C003E721E /* background.mp3 */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D96319DA1CB9FDA000257B45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D964F66C1C83DCD6006A8AB9 /* FindSenpai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindSenpai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D964F6701C83DCD6006A8AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D964F6711C83DCD6006A8AB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		D964F6851C83DCD6006A8AB9 /* FindSenpaiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindSenpaiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D964F68A1C83DCD6006A8AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D964F68B1C83DCD6006A8AB9 /* FindSenpaiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindSenpaiTests.swift; sourceTree = "<group>"; };
-		D964F6951C83DEFF006A8AB9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../../../../.Trash/Images.xcassets; sourceTree = "<group>"; };
 		D98388B61CB8786C003E721E /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,8 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				D98388B61CB8786C003E721E /* background.mp3 */,
-				D964F6951C83DEFF006A8AB9 /* Images.xcassets */,
 				D964F6711C83DCD6006A8AB9 /* AppDelegate.swift */,
+				D96319DA1CB9FDA000257B45 /* Images.xcassets */,
 				D964F6731C83DCD6006A8AB9 /* GameScene.sks */,
 				D964F6751C83DCD6006A8AB9 /* GameScene.swift */,
 				D964F6771C83DCD6006A8AB9 /* GameViewController.swift */,
@@ -204,8 +204,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D964F6801C83DCD6006A8AB9 /* LaunchScreen.xib in Resources */,
+				D96319DB1CB9FDA000257B45 /* Images.xcassets in Resources */,
 				D98388B71CB8786C003E721E /* background.mp3 in Resources */,
-				D964F6961C83DEFF006A8AB9 /* Images.xcassets in Resources */,
 				D964F6741C83DCD6006A8AB9 /* GameScene.sks in Resources */,
 				D964F67B1C83DCD6006A8AB9 /* Main.storyboard in Resources */,
 			);
