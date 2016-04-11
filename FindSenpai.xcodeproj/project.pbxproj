@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D91FCD3E1CBB4A9E0095EE7F /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */; };
+		D91FCD3F1CBB4AF00095EE7F /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */; };
 		D96319DB1CB9FDA000257B45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D96319DA1CB9FDA000257B45 /* Images.xcassets */; };
 		D964F6721C83DCD6006A8AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964F6711C83DCD6006A8AB9 /* AppDelegate.swift */; };
 		D964F6741C83DCD6006A8AB9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D964F6731C83DCD6006A8AB9 /* GameScene.sks */; };
@@ -29,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterNode.swift; sourceTree = "<group>"; };
 		D96319DA1CB9FDA000257B45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D964F66C1C83DCD6006A8AB9 /* FindSenpai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindSenpai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D964F6701C83DCD6006A8AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 				D96319DA1CB9FDA000257B45 /* Images.xcassets */,
 				D964F6731C83DCD6006A8AB9 /* GameScene.sks */,
 				D964F6751C83DCD6006A8AB9 /* GameScene.swift */,
+				D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */,
 				D964F6771C83DCD6006A8AB9 /* GameViewController.swift */,
 				D964F6791C83DCD6006A8AB9 /* Main.storyboard */,
 				D964F67E1C83DCD6006A8AB9 /* LaunchScreen.xib */,
@@ -226,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D964F6761C83DCD6006A8AB9 /* GameScene.swift in Sources */,
+				D91FCD3E1CBB4A9E0095EE7F /* CharacterNode.swift in Sources */,
 				D964F6781C83DCD6006A8AB9 /* GameViewController.swift in Sources */,
 				D964F6721C83DCD6006A8AB9 /* AppDelegate.swift in Sources */,
 			);
@@ -236,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D964F68C1C83DCD6006A8AB9 /* FindSenpaiTests.swift in Sources */,
+				D91FCD3F1CBB4AF00095EE7F /* CharacterNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

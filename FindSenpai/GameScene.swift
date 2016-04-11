@@ -19,7 +19,7 @@ class GameScene: SKScene {
     var numCharacters = 1
     var difficulty = 3
     
-    var senpai : SKSpriteNode!
+    var senpai : CharacterNode!
     var senpaiPreview : SKSpriteNode!
     var previewText1 : SKLabelNode!
     var previewText2 : SKLabelNode!
@@ -47,14 +47,14 @@ class GameScene: SKScene {
     func setUp() {
         backgroundColor = SKColor.whiteColor()
         
+        playAreaWidth = size.width * 0.8
+        playAreaHeight = size.height * 0.8
+        heightOffset = Int(size.height - playAreaHeight) / 2
+        
         levelReward.size = CGSize(width: (levelReward.size.width / 6), height: (levelReward.size.height / 6))
         levelReward.alpha = 0.0
         levelReward.zPosition = 3
         levelReward.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
-        
-        playAreaWidth = size.width * 0.8
-        playAreaHeight = size.height * 0.8
-        heightOffset = Int(size.height - playAreaHeight) / 2
         numCharacters = Int((playAreaWidth * playAreaHeight) / CGFloat(characterSize * 3))
         
         addChild(backgroundMusic)
@@ -80,21 +80,14 @@ class GameScene: SKScene {
         senpaiName = generateName(senpaiNumber)
         let senpaiPreviewName = senpaiName + "Big"
         
-        senpai = SKSpriteNode(imageNamed: senpaiName);
+        senpai = CharacterNode(imageNamed: senpaiName, areaHeight: size.height, areaWidth: size.width, name: "Senpai", zPos: 2)
         senpaiPreview = SKSpriteNode(imageNamed: senpaiPreviewName)
         
-        let senpaiX = scale(playAreaWidth) + widthOffset
-        let senpaiY = scale(playAreaHeight) + heightOffset
-        
-        // Set up senpai's position and the position of the preview
-        senpai.position = CGPoint(x: senpaiX, y: senpaiY)
+        // Set up position of the preview
         senpaiPreview.position = CGPoint(x: size.width - senpaiPreview.size.width, y: (senpaiPreview.size.height / 2) + 10)
         
         senpaiPreview.userInteractionEnabled = true
-        senpai.userInteractionEnabled = false
-        senpai.name = "Senpai"
         senpaiPreview.name = "SenpaiPreview"
-        senpai.zPosition = 2
         
         addChild(senpai)
         addChild(senpaiPreview)
@@ -152,12 +145,7 @@ class GameScene: SKScene {
             let randomIndex:Int = Int(arc4random_uniform(UInt32(characterArray.count)))
             let randomNonSenpaiNumber:NSNumber = characterArray[randomIndex] as! NSNumber
             let nonSenpaiName:String = generateName(randomNonSenpaiNumber)
-            let nonSenpai:SKSpriteNode = SKSpriteNode(imageNamed: nonSenpaiName)
-            
-            nonSenpai.position = CGPoint(x: scale(playAreaWidth) + widthOffset, y: scale(playAreaHeight) + heightOffset)
-            nonSenpai.name = "NonSenpai"
-            nonSenpai.userInteractionEnabled = true
-            nonSenpai.zPosition = 1
+            let nonSenpai = CharacterNode(imageNamed: nonSenpaiName, areaHeight: size.height, areaWidth: size.width, name: "NonSenpai", zPos: 1)
             
             addChild(nonSenpai);
         }
