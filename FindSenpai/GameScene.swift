@@ -14,7 +14,7 @@ class GameScene: SKScene {
     var senpaiName : String!
     
     var level = 1
-    var difficulty = 2
+    var difficulty = 1.5
     var widthOffset = 10
     var characterSize = 50 * 25
     var numCharacters = 1
@@ -136,7 +136,7 @@ class GameScene: SKScene {
     }
     
     func generateCharacters() {
-        numCharacters = numCharacters + (level * difficulty)
+        numCharacters = Int(CGFloat(numCharacters) * (1 + (CGFloat(level) * 0.1)))
         for _ in 0...numCharacters {
             let randomIndex:Int = Int(arc4random_uniform(UInt32(characterArray.count)))
             let randomNonSenpaiNumber:NSNumber = characterArray[randomIndex] as! NSNumber
