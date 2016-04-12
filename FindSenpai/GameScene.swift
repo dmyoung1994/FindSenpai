@@ -14,10 +14,10 @@ class GameScene: SKScene {
     var senpaiName : String!
     
     var level = 1
+    var difficulty = 2
     var widthOffset = 10
     var characterSize = 50 * 25
     var numCharacters = 1
-    var difficulty = 3
     
     var senpai : CharacterNode!
     var senpaiPreview : SKSpriteNode!
@@ -30,8 +30,6 @@ class GameScene: SKScene {
     var playAreaHeight : CGFloat!
     var heightOffset : Int!
     var characterArray : NSMutableArray!
-    
-    var backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
     var levelReward = SKSpriteNode(imageNamed: "reward")
     
     func randomNumber(range: Range<Int>) -> Int {
@@ -55,9 +53,7 @@ class GameScene: SKScene {
         levelReward.alpha = 0.0
         levelReward.zPosition = 3
         levelReward.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
-        numCharacters = Int((playAreaWidth * playAreaHeight) / CGFloat(characterSize * 3))
-        
-        addChild(backgroundMusic)
+        numCharacters = Int((playAreaWidth * playAreaHeight) / CGFloat(characterSize * 5))
         addChild(levelReward)
     }
     
@@ -80,7 +76,7 @@ class GameScene: SKScene {
         senpaiName = generateName(senpaiNumber)
         let senpaiPreviewName = senpaiName + "Big"
         
-        senpai = CharacterNode(imageNamed: senpaiName, areaHeight: size.height, areaWidth: size.width, name: "Senpai", zPos: 2)
+        senpai = CharacterNode(imageNamed: senpaiName, areaHeight: size.height, areaWidth: size.width, name: "Senpai", zPos: 2, level: level)
         senpaiPreview = SKSpriteNode(imageNamed: senpaiPreviewName)
         
         // Set up position of the preview
@@ -123,8 +119,8 @@ class GameScene: SKScene {
         levelDesc.fontSize = 40
         levelDesc.fontColor = SKColor.blackColor()
         
-        previewText1.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 50)
-        previewText2.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 30)
+        previewText1.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 60)
+        previewText2.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 40)
         levelLabel.position = CGPoint(x: senpaiPreview.position.x, y: size.height - 40)
         levelDesc.position = CGPoint(x: senpaiPreview.position.x, y: levelLabel.position.y - 40)
         
@@ -145,7 +141,7 @@ class GameScene: SKScene {
             let randomIndex:Int = Int(arc4random_uniform(UInt32(characterArray.count)))
             let randomNonSenpaiNumber:NSNumber = characterArray[randomIndex] as! NSNumber
             let nonSenpaiName:String = generateName(randomNonSenpaiNumber)
-            let nonSenpai = CharacterNode(imageNamed: nonSenpaiName, areaHeight: size.height, areaWidth: size.width, name: "NonSenpai", zPos: 1)
+            let nonSenpai = CharacterNode(imageNamed: nonSenpaiName, areaHeight: size.height, areaWidth: size.width, name: "NonSenpai", zPos: 1, level: level)
             
             addChild(nonSenpai);
         }

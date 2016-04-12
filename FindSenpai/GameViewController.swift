@@ -6,7 +6,8 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let scene = GameScene(size: view.bounds.size)
+        let scene = MenuScene(size: view.bounds.size)
+        SKTAudio.sharedInstance().playBackgroundMusic("background.mp3")
         let skView = view as! SKView
         skView.ignoresSiblingOrder = true
         scene.scaleMode = .ResizeFill
