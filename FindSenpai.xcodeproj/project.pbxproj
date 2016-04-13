@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D91FCD3E1CBB4A9E0095EE7F /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */; };
 		D91FCD3F1CBB4AF00095EE7F /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */; };
+		D958F2601CBDF68000841771 /* ARCADECLASSIC.TTF in Resources */ = {isa = PBXBuildFile; fileRef = D958F25F1CBDF68000841771 /* ARCADECLASSIC.TTF */; };
 		D96319DB1CB9FDA000257B45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D96319DA1CB9FDA000257B45 /* Images.xcassets */; };
 		D964F6721C83DCD6006A8AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964F6711C83DCD6006A8AB9 /* AppDelegate.swift */; };
 		D964F6741C83DCD6006A8AB9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D964F6731C83DCD6006A8AB9 /* GameScene.sks */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterNode.swift; sourceTree = "<group>"; };
+		D958F25F1CBDF68000841771 /* ARCADECLASSIC.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARCADECLASSIC.TTF; sourceTree = "<group>"; };
 		D96319DA1CB9FDA000257B45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D964F66C1C83DCD6006A8AB9 /* FindSenpai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindSenpai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D964F6701C83DCD6006A8AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				D9985AEF1CBC9B920097BFA3 /* MenuScene.swift */,
 				D98388B61CB8786C003E721E /* background.mp3 */,
+				D958F25F1CBDF68000841771 /* ARCADECLASSIC.TTF */,
 				D964F6711C83DCD6006A8AB9 /* AppDelegate.swift */,
 				D96319DA1CB9FDA000257B45 /* Images.xcassets */,
 				D964F6731C83DCD6006A8AB9 /* GameScene.sks */,
@@ -181,7 +184,7 @@
 				TargetAttributes = {
 					D964F66B1C83DCD6006A8AB9 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = PEY8BBLW7A;
+						DevelopmentTeam = DRRWA3U54Y;
 					};
 					D964F6841C83DCD6006A8AB9 = {
 						CreatedOnToolsVersion = 6.4;
@@ -216,6 +219,7 @@
 				D964F6801C83DCD6006A8AB9 /* LaunchScreen.xib in Resources */,
 				D96319DB1CB9FDA000257B45 /* Images.xcassets in Resources */,
 				D98388B71CB8786C003E721E /* background.mp3 in Resources */,
+				D958F2601CBDF68000841771 /* ARCADECLASSIC.TTF in Resources */,
 				D964F6741C83DCD6006A8AB9 /* GameScene.sks in Resources */,
 				D964F67B1C83DCD6006A8AB9 /* Main.storyboard in Resources */,
 			);
@@ -300,6 +304,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -375,9 +380,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FindSenpai/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.scoutgames.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pixelperfectgames.FindSenpai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -389,9 +395,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FindSenpai/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.scoutgames.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.pixelperfectgames.FindSenpai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

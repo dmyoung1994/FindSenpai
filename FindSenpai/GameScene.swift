@@ -80,7 +80,7 @@ class GameScene: SKScene {
         senpaiPreview = SKSpriteNode(imageNamed: senpaiPreviewName)
         
         // Set up position of the preview
-        senpaiPreview.position = CGPoint(x: size.width - senpaiPreview.size.width, y: (senpaiPreview.size.height / 2) + 10)
+        senpaiPreview.position = CGPoint(x: size.width - senpaiPreview.size.width - 5, y: (senpaiPreview.size.height / 2) + 10)
         
         senpaiPreview.userInteractionEnabled = true
         senpaiPreview.name = "SenpaiPreview"
@@ -99,22 +99,22 @@ class GameScene: SKScene {
     }
     
     func makeLabels() {
-        previewText1 = SKLabelNode(fontNamed: "Arial")
+        previewText1 = SKLabelNode(fontNamed: "ArcadeClassic")
         previewText1.text = "Senpai"
         previewText1.fontSize = 20
         previewText1.fontColor = SKColor.blackColor()
     
-        previewText2 = SKLabelNode(fontNamed: "Arial")
+        previewText2 = SKLabelNode(fontNamed: "ArcadeClassic")
         previewText2.text = "Preview"
         previewText2.fontSize = 20
         previewText2.fontColor = SKColor.blackColor()
         
-        levelLabel = SKLabelNode(fontNamed: "Arial")
+        levelLabel = SKLabelNode(fontNamed: "ArcadeClassic")
         levelLabel.text = "LEVEL"
         levelLabel.fontSize = 20
         levelLabel.fontColor = SKColor.blackColor()
         
-        levelDesc = SKLabelNode(fontNamed: "Arial")
+        levelDesc = SKLabelNode(fontNamed: "ArcadeClassic")
         levelDesc.text = String(level)
         levelDesc.fontSize = 40
         levelDesc.fontColor = SKColor.blackColor()
@@ -136,8 +136,8 @@ class GameScene: SKScene {
     }
     
     func generateCharacters() {
-        numCharacters = Int(CGFloat(numCharacters) * (1 + (CGFloat(level) * 0.1)))
-        for _ in 0...numCharacters {
+        let chars = Int(CGFloat(numCharacters) * (1 + (CGFloat(level) * 0.1)))
+        for _ in 0...chars {
             let randomIndex:Int = Int(arc4random_uniform(UInt32(characterArray.count)))
             let randomNonSenpaiNumber:NSNumber = characterArray[randomIndex] as! NSNumber
             let nonSenpaiName:String = generateName(randomNonSenpaiNumber)
