@@ -18,6 +18,7 @@ class GameScene: SKScene {
     var widthOffset = 10
     var characterSize = 50 * 25
     var numCharacters = 1
+    var score = 0
     
     var senpai : CharacterNode!
     var senpaiPreview : SKSpriteNode!
@@ -25,12 +26,16 @@ class GameScene: SKScene {
     var previewText2 : SKLabelNode!
     var levelLabel : SKLabelNode!
     var levelDesc : SKLabelNode!
+    var scoreText : SKLabelNode!
     
     var playAreaWidth : CGFloat!
     var playAreaHeight : CGFloat!
     var heightOffset : Int!
     var characterArray : NSMutableArray!
     var levelReward = SKSpriteNode(imageNamed: "reward")
+    
+    var levelStart:NSDate!
+    var levelEnd:NSDate!
     
     func randomNumber(range: Range<Int>) -> Int {
         let min = range.startIndex
@@ -64,6 +69,8 @@ class GameScene: SKScene {
                 self.removeChildrenInArray([child])
             }
         }
+        
+        levelStart = NSDate()
     }
     
     func generateName(number: NSNumber) -> String {
@@ -76,7 +83,7 @@ class GameScene: SKScene {
         senpaiName = generateName(senpaiNumber)
         let senpaiPreviewName = senpaiName + "Big"
         
-        senpai = CharacterNode(imageNamed: senpaiName, areaHeight: size.height, areaWidth: size.width, name: "Senpai", zPos: 2, level: level)
+        senpai = CharacterNode(imageNamed: senpaiName, areaHeight: size.height - 20, areaWidth: size.width, name: "Senpai", zPos: 2, level: level)
         senpaiPreview = SKSpriteNode(imageNamed: senpaiPreviewName)
         
         // Set up position of the preview
@@ -119,20 +126,29 @@ class GameScene: SKScene {
         levelDesc.fontSize = 40
         levelDesc.fontColor = SKColor.blackColor()
         
+        scoreText = SKLabelNode(fontNamed: "ArcadeClassic")
+        scoreText.text = "Score: " + String(score)
+        scoreText.fontSize = 20
+        scoreText.fontColor = SKColor.blackColor()
+        scoreText.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+        
         previewText1.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 60)
         previewText2.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 40)
         levelLabel.position = CGPoint(x: senpaiPreview.position.x, y: size.height - 40)
         levelDesc.position = CGPoint(x: senpaiPreview.position.x, y: levelLabel.position.y - 40)
+        scoreText.position = CGPoint(x: 10, y: size.height - 20)
         
         previewText1.userInteractionEnabled = true
         previewText2.userInteractionEnabled = true
         levelLabel.userInteractionEnabled = true
         levelDesc.userInteractionEnabled = true
+        scoreText.userInteractionEnabled = true
         
         addChild(previewText1)
         addChild(previewText2)
         addChild(levelLabel)
         addChild(levelDesc)
+        addChild(scoreText)
     }
     
     func generateCharacters() {
@@ -141,15 +157,32 @@ class GameScene: SKScene {
             let randomIndex:Int = Int(arc4random_uniform(UInt32(characterArray.count)))
             let randomNonSenpaiNumber:NSNumber = characterArray[randomIndex] as! NSNumber
             let nonSenpaiName:String = generateName(randomNonSenpaiNumber)
-            let nonSenpai = CharacterNode(imageNamed: nonSenpaiName, areaHeight: size.height, areaWidth: size.width, name: "NonSenpai", zPos: 1, level: level)
+            let nonSenpai = CharacterNode(imageNamed: nonSenpaiName, areaHeight: size.height - 20, areaWidth: size.width, name: nonSenpaiName, zPos: 1, level: level)
             
             addChild(nonSenpai);
         }
     }
     
+    func calculateScore() {
+        levelEnd = NSDate()
+        let maxScore:Double = Double(level) * 10
+        let levelDuration = Int(levelEnd.timeIntervalSinceDate(levelStart))
+        if levelDuration < 10 {
+            score += Int(maxScore)
+        } else if levelDuration < 20 {
+            score += Int(maxScore * 0.8)
+        } else if levelDuration < 30 {
+            score += Int(maxScore * 0.6)
+        } else {
+            score += Int(maxScore * 0.3)
+        }
+    }
+    
     func updateLevelText() {
+        calculateScore()
         level += 1
         levelDesc.text = String(level)
+        scoreText.text = "Score: " + String(score)
     }
     
     func newGame() {
@@ -175,10 +208,11 @@ class GameScene: SKScene {
         let positionInScene = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(positionInScene)
         if touchedNode.name == "Senpai" {
-            print("Found Senpai")
             nextLevel()
-        } else if touchedNode.name == "NonSenpai" {
-            print("WRONG");
+        } else if ((touchedNode.name?.containsString("Char")) != nil) {
+            let scene = LostGameScene(size: size, characterName: senpaiName!, score: score)
+            let transition = SKTransition.fadeWithDuration(0.5)
+            self.view!.presentScene(scene, transition: transition)
         }
     }
 }
