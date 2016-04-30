@@ -184,7 +184,7 @@
 				TargetAttributes = {
 					D964F66B1C83DCD6006A8AB9 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = DRRWA3U54Y;
+						DevelopmentTeam = PEY8BBLW7A;
 					};
 					D964F6841C83DCD6006A8AB9 = {
 						CreatedOnToolsVersion = 6.4;
@@ -380,7 +380,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FindSenpai/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.pixelperfectgames.FindSenpai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danielyoung.FindSenpai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -395,7 +395,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FindSenpai/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.pixelperfectgames.FindSenpai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.danielyoung.FindSenpai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
