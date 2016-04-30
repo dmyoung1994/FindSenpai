@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D91FCD3E1CBB4A9E0095EE7F /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */; };
 		D91FCD3F1CBB4AF00095EE7F /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */; };
+		D94C96951CCB159E00B5602F /* LostGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C96941CCB159E00B5602F /* LostGameScene.swift */; };
 		D958F2601CBDF68000841771 /* ARCADECLASSIC.TTF in Resources */ = {isa = PBXBuildFile; fileRef = D958F25F1CBDF68000841771 /* ARCADECLASSIC.TTF */; };
 		D96319DB1CB9FDA000257B45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D96319DA1CB9FDA000257B45 /* Images.xcassets */; };
 		D964F6721C83DCD6006A8AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964F6711C83DCD6006A8AB9 /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterNode.swift; sourceTree = "<group>"; };
+		D94C96941CCB159E00B5602F /* LostGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LostGameScene.swift; sourceTree = "<group>"; };
 		D958F25F1CBDF68000841771 /* ARCADECLASSIC.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARCADECLASSIC.TTF; sourceTree = "<group>"; };
 		D96319DA1CB9FDA000257B45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D964F66C1C83DCD6006A8AB9 /* FindSenpai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindSenpai.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				D9985AEF1CBC9B920097BFA3 /* MenuScene.swift */,
+				D94C96941CCB159E00B5602F /* LostGameScene.swift */,
 				D98388B61CB8786C003E721E /* background.mp3 */,
 				D958F25F1CBDF68000841771 /* ARCADECLASSIC.TTF */,
 				D964F6711C83DCD6006A8AB9 /* AppDelegate.swift */,
@@ -243,6 +246,7 @@
 				D91FCD3E1CBB4A9E0095EE7F /* CharacterNode.swift in Sources */,
 				D9985AF01CBC9B920097BFA3 /* MenuScene.swift in Sources */,
 				D9985AF21CBC9FD40097BFA3 /* SKTAudio.swift in Sources */,
+				D94C96951CCB159E00B5602F /* LostGameScene.swift in Sources */,
 				D964F6781C83DCD6006A8AB9 /* GameViewController.swift in Sources */,
 				D964F6721C83DCD6006A8AB9 /* AppDelegate.swift in Sources */,
 			);

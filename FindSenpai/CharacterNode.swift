@@ -47,6 +47,9 @@ class CharacterNode: SKSpriteNode {
         start = randomPosition()
         height = height1 - offset
         width = width1 * 0.8
+        if nodeName == "menuChar" {
+            width = width1 - offset
+        }
         alpha = 0.0
         currentPos = start
         userInteractionEnabled = false
@@ -72,7 +75,7 @@ class CharacterNode: SKSpriteNode {
             break
         }
         
-        setTimeout(Double(randomNumber(0...10)), block: { () -> Void in
+        setTimeout(Double(randomNumber(0...8)), block: { () -> Void in
             self.moveCharacter()
         })
     }
