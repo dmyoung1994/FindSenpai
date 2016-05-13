@@ -53,7 +53,7 @@ class MenuScene: SKScene {
     
     private func startGame() {
         let gameScene = GameScene(size: view!.bounds.size)
-        let transition = SKTransition.fadeWithDuration(0.15)
+        let transition = SKTransition.doorwayWithDuration(1)
         view!.presentScene(gameScene, transition: transition)
     }
     

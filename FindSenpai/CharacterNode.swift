@@ -42,7 +42,8 @@ class CharacterNode: SKSpriteNode {
     
     init(imageNamed image:String, areaHeight height1:CGFloat, areaWidth width1:CGFloat, name nodeName:String, zPos pos:Int, level lvl:Int) {
         let texture = SKTexture(imageNamed: image)
-        super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
+        let nodeSize = CGSize(width: texture.size().width + 5, height: texture.size().height + 5)
+        super.init(texture: texture, color: SKColor.clearColor(), size: nodeSize)
         
         start = randomPosition()
         height = height1 - offset

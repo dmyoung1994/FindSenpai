@@ -213,6 +213,7 @@ class GameScene: SKScene {
             let scene = LostGameScene(size: size, characterName: senpaiName!, score: score)
             let transition = SKTransition.fadeWithDuration(0.5)
             self.view!.presentScene(scene, transition: transition)
+
         }
     }
 }

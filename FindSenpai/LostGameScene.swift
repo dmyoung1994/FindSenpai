@@ -11,12 +11,13 @@ import SpriteKit
 @available(iOS 9.0, *)
 class LostGameScene: SKScene {
     
-    var lossText:String = "I  didn't  want  you "
-    var lossText2:String = "to  notice  me  anyways..."
+    var lossText:String = "I  DIDN'T WANT YOU"
+    var lossText2:String = "TO  NOTICE  ME  ANYWAYS..."
     var playAgainButton:SKLabelNode = SKLabelNode(fontNamed: "ArcadeClassic")
     var lossLabel:SKLabelNode = SKLabelNode(fontNamed: "ArcadeClassic")
     var lossLabel2:SKLabelNode = SKLabelNode(fontNamed: "ArcadeClassic")
     var yourScore:SKLabelNode = SKLabelNode(fontNamed: "ArcadeClassic")
+    var menuButton:SKLabelNode = SKLabelNode(fontNamed: "ArcadeClassic")
     var lonelySenpai:SKSpriteNode!
     
     init(size: CGSize, characterName:String, score:Int) {
@@ -40,12 +41,18 @@ class LostGameScene: SKScene {
         playAgainButton.name = "Play"
         playAgainButton.fontSize = 40
         playAgainButton.fontColor = UIColor.redColor()
-        playAgainButton.position = CGPoint(x: frame.midX - 50, y: frame.midY - 50)
+        playAgainButton.position = CGPoint(x: frame.midX - 50, y: frame.midY - 45)
         
-        yourScore.text = "Your Score: " + String(score)
+        yourScore.text = "Your Score:  " + String(score)
         yourScore.fontSize = 40
         yourScore.fontColor = UIColor.blackColor()
         yourScore.position = CGPoint(x: frame.midX, y: frame.midY + 90)
+        
+        menuButton.text = "MAIN MENU"
+        menuButton.name = "Menu"
+        menuButton.fontSize = 30
+        menuButton.fontColor = UIColor.blackColor()
+        menuButton.position = CGPoint(x: frame.midX - 50, y: frame.midY - 80)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -62,6 +69,8 @@ class LostGameScene: SKScene {
         addChild(lonelySenpai)
         addChild(lossLabel2)
         addChild(playAgainButton)
+        addChild(yourScore)
+        addChild(menuButton)
     }
     
     private func startGame() {
@@ -70,12 +79,20 @@ class LostGameScene: SKScene {
         view!.presentScene(gameScene, transition: transition)
     }
     
+    private func goToMenu() {
+        let menuScene = MenuScene(size: view!.bounds.size)
+        let transition = SKTransition.fadeWithDuration(0.15)
+        view!.presentScene(menuScene, transition: transition)
+    }
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch:UITouch = touches.first! as UITouch
         let positionInScene = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(positionInScene)
         if touchedNode.name == "Play" {
             startGame()
+        } else if touchedNode.name == "Menu" {
+            goToMenu()
         }
     }
     
