@@ -18,8 +18,9 @@ class LostGameScene: SKScene {
     var lossLabel2:SKLabelNode = SKLabelNode(fontNamed: "ArcadeClassic")
     var yourScore:SKLabelNode = SKLabelNode(fontNamed: "ArcadeClassic")
     var lonelySenpai:SKSpriteNode!
+    var gameMode:String!
     
-    init(size: CGSize, characterName:String, score:Int) {
+    init(size: CGSize, characterName:String, score:Int, mode:String = "Casual") {
         super.init(size: size)
         backgroundColor = SKColor.whiteColor()
         
@@ -46,6 +47,8 @@ class LostGameScene: SKScene {
         yourScore.fontSize = 40
         yourScore.fontColor = UIColor.blackColor()
         yourScore.position = CGPoint(x: frame.midX, y: frame.midY + 90)
+        
+        gameMode = mode
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -65,7 +68,13 @@ class LostGameScene: SKScene {
     }
     
     private func startGame() {
-        let gameScene = GameScene(size: view!.bounds.size)
+        var gameScene:SKScene
+        switch gameMode {
+        case "Time":
+            gameScene = TimeAttackGameScene(size: view!.bounds.size)
+        default:
+            gameScene = GameScene(size: view!.bounds.size);
+        }
         let transition = SKTransition.fadeWithDuration(0.15)
         view!.presentScene(gameScene, transition: transition)
     }

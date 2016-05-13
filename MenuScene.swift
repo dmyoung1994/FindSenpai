@@ -51,10 +51,10 @@ class MenuScene: SKScene {
         }
     }
     
-    private func startGame() {
-        let gameScene = GameScene(size: view!.bounds.size)
+    private func selectMode() {
+        let modeSelect = GameModeSelectScene(size: view!.bounds.size)
         let transition = SKTransition.fadeWithDuration(0.15)
-        view!.presentScene(gameScene, transition: transition)
+        view!.presentScene(modeSelect, transition: transition)
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -62,7 +62,7 @@ class MenuScene: SKScene {
         let positionInScene = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(positionInScene)
         if touchedNode.name == "Play" {
-            startGame()
+            selectMode()
         }
     }
 }

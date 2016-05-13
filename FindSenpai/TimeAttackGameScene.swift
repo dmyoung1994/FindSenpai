@@ -1,15 +1,15 @@
 //
-//  GameScene.swift
+//  TimeAttackGameScene.swift
 //  FindSenpai
 //
-//  Created by Daniel Young on 2/28/16.
-//  Copyright (c) 2016 Daniel Young. All rights reserved.
+//  Created by Daniel Young on 2016-05-13.
+//  Copyright © 2016 Daniel Young. All rights reserved.
 //
 
 import SpriteKit
 
 @available(iOS 9.0, *)
-class GameScene: SKScene {
+class TimeAttackGameScene: SKScene {
     var senpaiNumber : Int!
     var senpaiName : String!
     
@@ -20,12 +20,16 @@ class GameScene: SKScene {
     var numCharacters = 1
     var score = 0
     
+    var timeForLevel = 30.0
+    let timeInterval:NSTimeInterval = 0.05
+    var timeCount:NSTimeInterval = 30.0
+    
     var senpai : CharacterNode!
     var senpaiPreview : SKSpriteNode!
     var previewText1 : SKLabelNode!
     var previewText2 : SKLabelNode!
-    var levelLabel : SKLabelNode!
-    var levelDesc : SKLabelNode!
+    var timerLabel : SKLabelNode!
+    var timerDesc : SKLabelNode!
     var scoreText : SKLabelNode!
     
     var playAreaWidth : CGFloat!
@@ -34,8 +38,10 @@ class GameScene: SKScene {
     var characterArray : NSMutableArray!
     var levelReward = SKSpriteNode(imageNamed: "reward")
     
-    var levelStart:NSDate!
-    var levelEnd:NSDate!
+    var levelStart : NSDate!
+    var levelEnd : NSDate!
+    
+    var timer : NSTimer!
     
     func randomNumber(range: Range<Int>) -> Int {
         let min = range.startIndex
@@ -45,6 +51,26 @@ class GameScene: SKScene {
     
     func scale(number: CGFloat) -> Int {
         return randomNumber(0...Int(number))
+    }
+    
+    func timeString(time:NSTimeInterval) -> String {
+        let minutes = Int(time) / 60
+        let seconds = time - Double(minutes) * 60
+        let secondsFraction = seconds - Double(Int(seconds))
+        return String(format:"%02i:%02i.%01i",minutes,Int(seconds),Int(secondsFraction * 10.0))
+    }
+    
+    func timerDidEnd(){
+        timeCount = timeCount - timeInterval
+        if timeCount <= 10 {
+            timerDesc.fontColor = SKColor.redColor()
+        }
+        if timeCount <= 0 {
+            // Game is lost
+            endGame()
+        } else {
+            timerDesc.text = timeString(timeCount)
+        }
     }
     
     func setUp() {
@@ -59,6 +85,7 @@ class GameScene: SKScene {
         levelReward.zPosition = 3
         levelReward.position = CGPoint(x: size.width * 0.5, y: size.height * 0.5)
         numCharacters = Int((playAreaWidth * playAreaHeight) / CGFloat(characterSize * 5))
+        timer = NSTimer()
         addChild(levelReward)
     }
     
@@ -110,21 +137,21 @@ class GameScene: SKScene {
         previewText1.text = "Senpai"
         previewText1.fontSize = 20
         previewText1.fontColor = SKColor.blackColor()
-    
+        
         previewText2 = SKLabelNode(fontNamed: "ArcadeClassic")
         previewText2.text = "Preview"
         previewText2.fontSize = 20
         previewText2.fontColor = SKColor.blackColor()
         
-        levelLabel = SKLabelNode(fontNamed: "ArcadeClassic")
-        levelLabel.text = "LEVEL"
-        levelLabel.fontSize = 20
-        levelLabel.fontColor = SKColor.blackColor()
+        timerLabel = SKLabelNode(fontNamed: "ArcadeClassic")
+        timerLabel.text = "Time"
+        timerLabel.fontSize = 30
+        timerLabel.fontColor = SKColor.blackColor()
         
-        levelDesc = SKLabelNode(fontNamed: "ArcadeClassic")
-        levelDesc.text = String(level)
-        levelDesc.fontSize = 40
-        levelDesc.fontColor = SKColor.blackColor()
+        timerDesc = SKLabelNode(fontNamed: "ArcadeClassic")
+        timerDesc.text = timeString(timeCount)
+        timerDesc.fontSize = 25
+        timerDesc.fontColor = SKColor.blackColor()
         
         scoreText = SKLabelNode(fontNamed: "ArcadeClassic")
         scoreText.text = "Score: " + String(score)
@@ -134,20 +161,20 @@ class GameScene: SKScene {
         
         previewText1.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 60)
         previewText2.position = CGPoint(x: senpaiPreview.position.x, y: senpaiPreview.size.height + 40)
-        levelLabel.position = CGPoint(x: senpaiPreview.position.x, y: size.height - 40)
-        levelDesc.position = CGPoint(x: senpaiPreview.position.x, y: levelLabel.position.y - 40)
+        timerLabel.position = CGPoint(x: senpaiPreview.position.x, y: size.height - 40)
+        timerDesc.position = CGPoint(x: senpaiPreview.position.x, y: timerLabel.position.y - 40)
         scoreText.position = CGPoint(x: 10, y: size.height - 20)
         
         previewText1.userInteractionEnabled = true
         previewText2.userInteractionEnabled = true
-        levelLabel.userInteractionEnabled = true
-        levelDesc.userInteractionEnabled = true
+        timerLabel.userInteractionEnabled = true
+        timerDesc.userInteractionEnabled = true
         scoreText.userInteractionEnabled = true
         
         addChild(previewText1)
         addChild(previewText2)
-        addChild(levelLabel)
-        addChild(levelDesc)
+        addChild(timerLabel)
+        addChild(timerDesc)
         addChild(scoreText)
     }
     
@@ -181,20 +208,38 @@ class GameScene: SKScene {
     func updateLevelText() {
         calculateScore()
         level += 1
-        levelDesc.text = String(level)
         scoreText.text = "Score: " + String(score)
+        timeCount = timeCount + timeForLevel
+        timerDesc.text = timeString(timeCount)
+        timerDesc.fontColor = SKColor.blackColor()
+    }
+    
+    func startTimer() {
+        timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval,
+                                                       target: self,
+                                                       selector: #selector(TimeAttackGameScene.timerDidEnd),
+                                                       userInfo: nil,
+                                                       repeats: true)
     }
     
     func newGame() {
         reset()
         choseSenpai()
         generateCharacters()
+        startTimer()
     }
     
     func nextLevel() {
         animateReward()
         updateLevelText()
         newGame()
+    }
+    
+    func endGame() {
+        timer.invalidate()
+        let scene = LostGameScene(size: size, characterName: senpaiName!, score: score, mode: "Time")
+        let transition = SKTransition.fadeWithDuration(0.5)
+        self.view!.presentScene(scene, transition: transition)
     }
     
     override func didMoveToView(view: SKView) {
@@ -210,9 +255,7 @@ class GameScene: SKScene {
         if touchedNode.name == "Senpai" {
             nextLevel()
         } else if ((touchedNode.name?.containsString("Char")) != nil) {
-            let scene = LostGameScene(size: size, characterName: senpaiName!, score: score)
-            let transition = SKTransition.fadeWithDuration(0.5)
-            self.view!.presentScene(scene, transition: transition)
+            endGame()
         }
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F55EA061CE661FD00264219 /* GameModeSelectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55EA051CE661FD00264219 /* GameModeSelectScene.swift */; };
+		3F55EA081CE6626F00264219 /* TimeAttackGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55EA071CE6626F00264219 /* TimeAttackGameScene.swift */; };
 		D91FCD3E1CBB4A9E0095EE7F /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */; };
 		D91FCD3F1CBB4AF00095EE7F /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */; };
 		D94C96951CCB159E00B5602F /* LostGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C96941CCB159E00B5602F /* LostGameScene.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F55EA051CE661FD00264219 /* GameModeSelectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModeSelectScene.swift; sourceTree = "<group>"; };
+		3F55EA071CE6626F00264219 /* TimeAttackGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAttackGameScene.swift; sourceTree = "<group>"; };
 		D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterNode.swift; sourceTree = "<group>"; };
 		D94C96941CCB159E00B5602F /* LostGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LostGameScene.swift; sourceTree = "<group>"; };
 		D958F25F1CBDF68000841771 /* ARCADECLASSIC.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARCADECLASSIC.TTF; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				D9985AEF1CBC9B920097BFA3 /* MenuScene.swift */,
+				3F55EA051CE661FD00264219 /* GameModeSelectScene.swift */,
 				D94C96941CCB159E00B5602F /* LostGameScene.swift */,
 				D98388B61CB8786C003E721E /* background.mp3 */,
 				D958F25F1CBDF68000841771 /* ARCADECLASSIC.TTF */,
@@ -102,6 +107,7 @@
 				D96319DA1CB9FDA000257B45 /* Images.xcassets */,
 				D964F6731C83DCD6006A8AB9 /* GameScene.sks */,
 				D964F6751C83DCD6006A8AB9 /* GameScene.swift */,
+				3F55EA071CE6626F00264219 /* TimeAttackGameScene.swift */,
 				D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */,
 				D964F6771C83DCD6006A8AB9 /* GameViewController.swift */,
 				D9985AF11CBC9FD40097BFA3 /* SKTAudio.swift */,
@@ -187,7 +193,7 @@
 				TargetAttributes = {
 					D964F66B1C83DCD6006A8AB9 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = PEY8BBLW7A;
+						DevelopmentTeam = DRRWA3U54Y;
 					};
 					D964F6841C83DCD6006A8AB9 = {
 						CreatedOnToolsVersion = 6.4;
@@ -243,6 +249,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D964F6761C83DCD6006A8AB9 /* GameScene.swift in Sources */,
+				3F55EA061CE661FD00264219 /* GameModeSelectScene.swift in Sources */,
+				3F55EA081CE6626F00264219 /* TimeAttackGameScene.swift in Sources */,
 				D91FCD3E1CBB4A9E0095EE7F /* CharacterNode.swift in Sources */,
 				D9985AF01CBC9B920097BFA3 /* MenuScene.swift in Sources */,
 				D9985AF21CBC9FD40097BFA3 /* SKTAudio.swift in Sources */,
