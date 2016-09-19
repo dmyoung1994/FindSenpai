@@ -42,11 +42,14 @@ class CharacterNode: SKSpriteNode {
     
     init(imageNamed image:String, areaHeight height1:CGFloat, areaWidth width1:CGFloat, name nodeName:String, zPos pos:Int, level lvl:Int) {
         let texture = SKTexture(imageNamed: image)
-        super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
+        // increase asset size to make it easier to click
+        let increasedSize = CGSize(width: texture.size().width + 1, height: texture.size().height + 1)
+        super.init(texture: texture, color: SKColor.clearColor(), size: increasedSize)
         
         start = randomPosition()
         height = height1 - offset
         width = width1 * 0.8
+        // for menu use to make the charaters go across the whole screen
         if nodeName == "menuChar" {
             width = width1 - offset
         }

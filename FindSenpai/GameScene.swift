@@ -14,7 +14,6 @@ class GameScene: SKScene {
     var senpaiName : String!
     
     var level = 1
-    var difficulty = 1.5
     var widthOffset = 10
     var characterSize = 50 * 25
     var numCharacters = 1
@@ -36,6 +35,20 @@ class GameScene: SKScene {
     
     var levelStart:NSDate!
     var levelEnd:NSDate!
+    
+    init(size: CGSize, score: Int, level: Int) {
+        self.score = score;
+        self.level = level;
+        super.init(size: size);
+    }
+    
+    override init(size:CGSize) {
+        super.init(size: size);
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func randomNumber(range: Range<Int>) -> Int {
         let min = range.startIndex
@@ -106,29 +119,29 @@ class GameScene: SKScene {
     }
     
     func makeLabels() {
-        previewText1 = SKLabelNode(fontNamed: "ArcadeClassic")
+        previewText1 = SKLabelNode(fontNamed: "PressStart2P")
         previewText1.text = "Senpai"
-        previewText1.fontSize = 20
+        previewText1.fontSize = 15
         previewText1.fontColor = SKColor.blackColor()
     
-        previewText2 = SKLabelNode(fontNamed: "ArcadeClassic")
+        previewText2 = SKLabelNode(fontNamed: "PressStart2P")
         previewText2.text = "Preview"
-        previewText2.fontSize = 20
+        previewText2.fontSize = 15
         previewText2.fontColor = SKColor.blackColor()
         
-        levelLabel = SKLabelNode(fontNamed: "ArcadeClassic")
+        levelLabel = SKLabelNode(fontNamed: "PressStart2P")
         levelLabel.text = "LEVEL"
         levelLabel.fontSize = 20
         levelLabel.fontColor = SKColor.blackColor()
         
-        levelDesc = SKLabelNode(fontNamed: "ArcadeClassic")
+        levelDesc = SKLabelNode(fontNamed: "PressStart2P")
         levelDesc.text = String(level)
-        levelDesc.fontSize = 40
+        levelDesc.fontSize = 30
         levelDesc.fontColor = SKColor.blackColor()
         
-        scoreText = SKLabelNode(fontNamed: "ArcadeClassic")
+        scoreText = SKLabelNode(fontNamed: "PressStart2P")
         scoreText.text = "Score: " + String(score)
-        scoreText.fontSize = 20
+        scoreText.fontSize = 15
         scoreText.fontColor = SKColor.blackColor()
         scoreText.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
         
@@ -210,7 +223,7 @@ class GameScene: SKScene {
         if touchedNode.name == "Senpai" {
             nextLevel()
         } else if ((touchedNode.name?.containsString("Char")) != nil) {
-            let scene = LostGameScene(size: size, characterName: senpaiName!, score: score)
+            let scene = LostGameScene(size: size, characterName: senpaiName!, score: score, level: level)
             let transition = SKTransition.fadeWithDuration(0.5)
             self.view!.presentScene(scene, transition: transition)
         }

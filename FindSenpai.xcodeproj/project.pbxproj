@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F064DCF1D8BC6F200A5BD80 /* modalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F064DCD1D8BC6F200A5BD80 /* modalViewController.swift */; };
+		3F064DD01D8BC6F200A5BD80 /* modalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F064DCE1D8BC6F200A5BD80 /* modalViewController.xib */; };
+		3F0B63801CED6F3100310BCA /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F0B637F1CED6F3100310BCA /* PressStart2P.ttf */; };
 		3F55EA061CE661FD00264219 /* GameModeSelectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55EA051CE661FD00264219 /* GameModeSelectScene.swift */; };
 		3F55EA081CE6626F00264219 /* TimeAttackGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F55EA071CE6626F00264219 /* TimeAttackGameScene.swift */; };
 		D91FCD3E1CBB4A9E0095EE7F /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */; };
 		D91FCD3F1CBB4AF00095EE7F /* CharacterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */; };
 		D94C96951CCB159E00B5602F /* LostGameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94C96941CCB159E00B5602F /* LostGameScene.swift */; };
-		D958F2601CBDF68000841771 /* ARCADECLASSIC.TTF in Resources */ = {isa = PBXBuildFile; fileRef = D958F25F1CBDF68000841771 /* ARCADECLASSIC.TTF */; };
 		D96319DB1CB9FDA000257B45 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D96319DA1CB9FDA000257B45 /* Images.xcassets */; };
 		D964F6721C83DCD6006A8AB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D964F6711C83DCD6006A8AB9 /* AppDelegate.swift */; };
 		D964F6741C83DCD6006A8AB9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D964F6731C83DCD6006A8AB9 /* GameScene.sks */; };
@@ -37,11 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F064DCD1D8BC6F200A5BD80 /* modalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modalViewController.swift; sourceTree = "<group>"; };
+		3F064DCE1D8BC6F200A5BD80 /* modalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = modalViewController.xib; sourceTree = "<group>"; };
+		3F0B637F1CED6F3100310BCA /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
 		3F55EA051CE661FD00264219 /* GameModeSelectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameModeSelectScene.swift; sourceTree = "<group>"; };
 		3F55EA071CE6626F00264219 /* TimeAttackGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeAttackGameScene.swift; sourceTree = "<group>"; };
 		D91FCD3D1CBB4A9E0095EE7F /* CharacterNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterNode.swift; sourceTree = "<group>"; };
 		D94C96941CCB159E00B5602F /* LostGameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LostGameScene.swift; sourceTree = "<group>"; };
-		D958F25F1CBDF68000841771 /* ARCADECLASSIC.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = ARCADECLASSIC.TTF; sourceTree = "<group>"; };
 		D96319DA1CB9FDA000257B45 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D964F66C1C83DCD6006A8AB9 /* FindSenpai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindSenpai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D964F6701C83DCD6006A8AB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FF4A3E31D70A0B100A6805D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				3F0B637F1CED6F3100310BCA /* PressStart2P.ttf */,
+				D98388B61CB8786C003E721E /* background.mp3 */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		D964F6631C83DCD6006A8AB9 = {
 			isa = PBXGroup;
 			children = (
@@ -98,11 +111,12 @@
 		D964F66E1C83DCD6006A8AB9 /* FindSenpai */ = {
 			isa = PBXGroup;
 			children = (
+				3F064DCD1D8BC6F200A5BD80 /* modalViewController.swift */,
+				3F064DCE1D8BC6F200A5BD80 /* modalViewController.xib */,
 				D9985AEF1CBC9B920097BFA3 /* MenuScene.swift */,
 				3F55EA051CE661FD00264219 /* GameModeSelectScene.swift */,
 				D94C96941CCB159E00B5602F /* LostGameScene.swift */,
-				D98388B61CB8786C003E721E /* background.mp3 */,
-				D958F25F1CBDF68000841771 /* ARCADECLASSIC.TTF */,
+				3FF4A3E31D70A0B100A6805D /* Assets */,
 				D964F6711C83DCD6006A8AB9 /* AppDelegate.swift */,
 				D96319DA1CB9FDA000257B45 /* Images.xcassets */,
 				D964F6731C83DCD6006A8AB9 /* GameScene.sks */,
@@ -228,7 +242,8 @@
 				D964F6801C83DCD6006A8AB9 /* LaunchScreen.xib in Resources */,
 				D96319DB1CB9FDA000257B45 /* Images.xcassets in Resources */,
 				D98388B71CB8786C003E721E /* background.mp3 in Resources */,
-				D958F2601CBDF68000841771 /* ARCADECLASSIC.TTF in Resources */,
+				3F0B63801CED6F3100310BCA /* PressStart2P.ttf in Resources */,
+				3F064DD01D8BC6F200A5BD80 /* modalViewController.xib in Resources */,
 				D964F6741C83DCD6006A8AB9 /* GameScene.sks in Resources */,
 				D964F67B1C83DCD6006A8AB9 /* Main.storyboard in Resources */,
 			);
@@ -250,6 +265,7 @@
 			files = (
 				D964F6761C83DCD6006A8AB9 /* GameScene.swift in Sources */,
 				3F55EA061CE661FD00264219 /* GameModeSelectScene.swift in Sources */,
+				3F064DCF1D8BC6F200A5BD80 /* modalViewController.swift in Sources */,
 				3F55EA081CE6626F00264219 /* TimeAttackGameScene.swift in Sources */,
 				D91FCD3E1CBB4A9E0095EE7F /* CharacterNode.swift in Sources */,
 				D9985AF01CBC9B920097BFA3 /* MenuScene.swift in Sources */,
@@ -392,7 +408,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FindSenpai/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danielyoung.FindSenpai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmyoung.FindSenpai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -407,7 +423,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FindSenpai/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.danielyoung.FindSenpai;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmyoung.FindSenpai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

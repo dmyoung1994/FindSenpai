@@ -20,7 +20,7 @@ class TimeAttackGameScene: SKScene {
     var numCharacters = 1
     var score = 0
     
-    var timeForLevel = 30.0
+    var timeForLevel = 20.0
     let timeInterval:NSTimeInterval = 0.05
     var timeCount:NSTimeInterval = 30.0
     
@@ -133,29 +133,29 @@ class TimeAttackGameScene: SKScene {
     }
     
     func makeLabels() {
-        previewText1 = SKLabelNode(fontNamed: "ArcadeClassic")
+        previewText1 = SKLabelNode(fontNamed: "PressStart2P")
         previewText1.text = "Senpai"
-        previewText1.fontSize = 20
+        previewText1.fontSize = 15
         previewText1.fontColor = SKColor.blackColor()
         
-        previewText2 = SKLabelNode(fontNamed: "ArcadeClassic")
+        previewText2 = SKLabelNode(fontNamed: "PressStart2P")
         previewText2.text = "Preview"
-        previewText2.fontSize = 20
+        previewText2.fontSize = 15
         previewText2.fontColor = SKColor.blackColor()
         
-        timerLabel = SKLabelNode(fontNamed: "ArcadeClassic")
+        timerLabel = SKLabelNode(fontNamed: "PressStart2P")
         timerLabel.text = "Time"
-        timerLabel.fontSize = 30
+        timerLabel.fontSize = 20
         timerLabel.fontColor = SKColor.blackColor()
         
-        timerDesc = SKLabelNode(fontNamed: "ArcadeClassic")
+        timerDesc = SKLabelNode(fontNamed: "PressStart2P")
         timerDesc.text = timeString(timeCount)
-        timerDesc.fontSize = 25
+        timerDesc.fontSize = 15
         timerDesc.fontColor = SKColor.blackColor()
         
-        scoreText = SKLabelNode(fontNamed: "ArcadeClassic")
+        scoreText = SKLabelNode(fontNamed: "PressStart2P")
         scoreText.text = "Score: " + String(score)
-        scoreText.fontSize = 20
+        scoreText.fontSize = 15
         scoreText.fontColor = SKColor.blackColor()
         scoreText.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
         
@@ -207,6 +207,7 @@ class TimeAttackGameScene: SKScene {
     
     func updateLevelText() {
         calculateScore()
+        timer.invalidate()
         level += 1
         scoreText.text = "Score: " + String(score)
         timeCount = timeCount + timeForLevel
@@ -237,7 +238,7 @@ class TimeAttackGameScene: SKScene {
     
     func endGame() {
         timer.invalidate()
-        let scene = LostGameScene(size: size, characterName: senpaiName!, score: score, mode: "Time")
+        let scene = LostGameScene(size: size, characterName: senpaiName!, score: score, level: level, mode: "Time")
         let transition = SKTransition.fadeWithDuration(0.5)
         self.view!.presentScene(scene, transition: transition)
     }

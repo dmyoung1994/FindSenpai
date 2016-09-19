@@ -10,8 +10,8 @@ import SpriteKit
 
 @available(iOS 9.0, *)
 class GameModeSelectScene: SKScene {
-    var timeAttackLabel = SKLabelNode(fontNamed: "ArcadeClassic")
-    var defaultLabel = SKLabelNode(fontNamed: "ArcadeClassic")
+    var timeAttackLabel = SKLabelNode(fontNamed: "PressStart2P")
+    var defaultLabel = SKLabelNode(fontNamed: "PressStart2P")
     
     override func didMoveToView(view: SKView) {
         createLayout()
@@ -20,18 +20,20 @@ class GameModeSelectScene: SKScene {
     func createLayout() {
         backgroundColor = SKColor.whiteColor()
         
+        // TODO: Adjust frame to make more clickable
         timeAttackLabel.text = "Time Attack!"
         timeAttackLabel.name = "Time"
-        timeAttackLabel.fontSize = 40
+        timeAttackLabel.fontSize = 25
         timeAttackLabel.fontColor = SKColor.blackColor()
-        timeAttackLabel.position = CGPointMake(frame.midX - 150, frame.midY)
+        timeAttackLabel.position = CGPointMake(frame.midX, frame.midY - 30)
         timeAttackLabel.zPosition = 3
         
+        // TODO: Adjust frame to make more clickable
         defaultLabel.text = "Casual!"
         defaultLabel.name = "Casual"
-        defaultLabel.fontSize = 40
+        defaultLabel.fontSize = 25
         defaultLabel.fontColor = SKColor.blackColor()
-        defaultLabel.position = CGPointMake(frame.midX + 150, frame.midY)
+        defaultLabel.position = CGPointMake(frame.midX, frame.midY + 30)
         defaultLabel.zPosition = 3
         
         addChild(timeAttackLabel)
@@ -40,11 +42,10 @@ class GameModeSelectScene: SKScene {
     
     private func startGame(mode:String) {
         var gameScene:SKScene
-        switch mode {
-        case "Time":
+        if mode == "Time" {
             gameScene = TimeAttackGameScene(size: view!.bounds.size)
-        default:
-            gameScene = GameScene(size: view!.bounds.size);
+        } else {
+            gameScene = GameScene(size: view!.bounds.size)
         }
         let transition = SKTransition.fadeWithDuration(0.15)
         view!.presentScene(gameScene, transition: transition)
@@ -54,7 +55,9 @@ class GameModeSelectScene: SKScene {
         let touch:UITouch = touches.first! as UITouch
         let positionInScene = touch.locationInNode(self)
         let touchedNode = self.nodeAtPoint(positionInScene)
-        let nodeNade = (touchedNode.name != nil) ? touchedNode.name! : ""
-        startGame(nodeNade)
+        if let name = touchedNode.name
+        {
+            startGame(name)
+        }
     }
 }

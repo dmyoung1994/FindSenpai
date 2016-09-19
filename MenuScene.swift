@@ -11,8 +11,8 @@ import SpriteKit
 @available(iOS 9.0, *)
 class MenuScene: SKScene {
     var highScore:Int = 0 // Impliment when high score is saved in a DB and change to start at 0
-    var title = SKLabelNode(fontNamed: "ArcadeClassic")
-    var playButton = SKLabelNode(fontNamed: "ArcadeClassic") // find button texture in the future
+    var title = SKLabelNode(fontNamed: "PressStart2P")
+    var playButton = SKLabelNode(fontNamed: "PressStart2P") // find button texture in the future
     
     override func didMoveToView(view: SKView) {
         createLayout()
@@ -26,12 +26,12 @@ class MenuScene: SKScene {
         title.position = CGPointMake(frame.midX, frame.midY + 50)
         title.zPosition = 3
         
+        // TODO: Adjust frame to make more clickable
         playButton.text = "Play!"
         playButton.name = "Play"
         playButton.fontSize = 35
         playButton.fontColor = SKColor.redColor()
         playButton.position = CGPointMake(frame.midX, frame.midY - 20)
-    
         playButton.zPosition = 3
         
         addChild(title)

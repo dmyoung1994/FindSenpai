@@ -11,40 +11,61 @@ import SpriteKit
 @available(iOS 9.0, *)
 class LostGameScene: SKScene {
     
-    var lossText:String = "I  didn't  want  you "
-    var lossText2:String = "to  notice  me  anyways..."
-    var playAgainButton:SKLabelNode = SKLabelNode(fontNamed: "ArcadeClassic")
-    var lossLabel:SKLabelNode = SKLabelNode(fontNamed: "ArcadeClassic")
-    var lossLabel2:SKLabelNode = SKLabelNode(fontNamed: "ArcadeClassic")
-    var yourScore:SKLabelNode = SKLabelNode(fontNamed: "ArcadeClassic")
+    // TODO: Pause and play sad background music
+    var lossText:String = "I  DIDN'T WANT YOU"
+    var lossText2:String = "TO NOTICE ME ANYWAYS..."
+    var playAgainButton:SKLabelNode = SKLabelNode(fontNamed: "PressStart2P")
+    var lossLabel:SKLabelNode = SKLabelNode(fontNamed: "PressStart2P")
+    var lossLabel2:SKLabelNode = SKLabelNode(fontNamed: "PressStart2P")
+    var yourScore:SKLabelNode = SKLabelNode(fontNamed: "PressStart2P")
+    var menuButton:SKLabelNode = SKLabelNode(fontNamed: "PressStart2P")
+    var contButton:SKLabelNode = SKLabelNode(fontNamed: "PressStart2P")
     var lonelySenpai:SKSpriteNode!
     var gameMode:String!
     
-    init(size: CGSize, characterName:String, score:Int, mode:String = "Casual") {
+    let highscoreKey = "highScoreKey"
+    let highScore = NSUserDefaults.standardUserDefaults()
+    
+    init(size:CGSize, characterName:String, score:Int, level:Int, mode:String = "Casual") {
         super.init(size: size)
         backgroundColor = SKColor.whiteColor()
         
         lonelySenpai = SKSpriteNode(imageNamed: characterName+"Big")
-        lonelySenpai.position = CGPoint(x: frame.midX + 120, y: frame.midY)
+        lonelySenpai.position = CGPoint(x: frame.midX + 150, y: frame.midY)
         
         lossLabel.text = lossText
-        lossLabel.fontSize = 25
+        lossLabel.fontSize = 15
         lossLabel.position = CGPoint(x: frame.midX - 50, y: frame.midY + 40)
         lossLabel.fontColor = UIColor.blackColor()
         
         lossLabel2.text = lossText2
-        lossLabel2.fontSize = 25
+        lossLabel2.fontSize = 15
         lossLabel2.position = CGPoint(x: frame.midX - 50, y: frame.midY + 10)
         lossLabel2.fontColor = UIColor.blackColor()
         
-        playAgainButton.text = "Play Again!"
+        // TODO: Adjust frame to make more clickable
+        playAgainButton.text = "Play!"
         playAgainButton.name = "Play"
-        playAgainButton.fontSize = 40
-        playAgainButton.fontColor = UIColor.redColor()
-        playAgainButton.position = CGPoint(x: frame.midX - 50, y: frame.midY - 50)
+        playAgainButton.fontSize = 25
+        playAgainButton.fontColor = UIColor.blackColor()
+        playAgainButton.position = CGPoint(x: frame.midX - 80, y: frame.midY - 90)
+        
+        // TODO: Adjust frame to make more clickable
+        contButton.text = "Continue?"
+        contButton.name = "Contunue"
+        contButton.fontSize = 25
+        contButton.fontColor = UIColor.redColor()
+        contButton.position = CGPoint(x: frame.midX - 15, y: frame.midY - 40)
+        
+        // TODO: Adjust frame to make more clickable
+        menuButton.text = "Menu"
+        menuButton.name = "Menu"
+        menuButton.fontSize = 20
+        menuButton.fontColor = UIColor.blackColor()
+        menuButton.position = CGPoint(x: frame.midX, y: frame.midY - 90)
         
         yourScore.text = "Your Score: " + String(score)
-        yourScore.fontSize = 40
+        yourScore.fontSize = 25
         yourScore.fontColor = UIColor.blackColor()
         yourScore.position = CGPoint(x: frame.midX, y: frame.midY + 90)
         
@@ -65,6 +86,9 @@ class LostGameScene: SKScene {
         addChild(lonelySenpai)
         addChild(lossLabel2)
         addChild(playAgainButton)
+        addChild(menuButton)
+        addChild(yourScore);
+        addChild(contButton);
     }
     
     private func startGame() {
@@ -85,6 +109,10 @@ class LostGameScene: SKScene {
         let touchedNode = self.nodeAtPoint(positionInScene)
         if touchedNode.name == "Play" {
             startGame()
+        } else if touchedNode.name == "Menu" {
+            let menu = MenuScene(size: view!.bounds.size)
+            let transition = SKTransition.fadeWithDuration(0.15)
+            view!.presentScene(menu, transition: transition)
         }
     }
     
